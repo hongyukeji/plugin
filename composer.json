@@ -11,8 +11,7 @@
     },
     "require": {
         "php": ">=5.4.0",
-        "hongyukeji/plugin-package": "^1.1",
-        "hongyukeji/plugin-theme": "^1.1"
+        "hongyukeji/plugin-package": "^1.1"
     },
     "autoload": {
         "psr-4": {

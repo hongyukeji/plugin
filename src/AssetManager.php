@@ -2,7 +2,7 @@
 
 namespace Hongyukeji\Plugin;
 
-class AssetManager extends \Hongyukeji\Package\AssetManager
+class AssetManager extends \Hongyukeji\PluginPackage\AssetManager
 {
     /**
      * Returns the Package object that created this instance of AssetManager

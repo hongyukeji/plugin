@@ -9,7 +9,7 @@ namespace Hongyukeji\Plugin;
  * @package Hongyukeji\Plugin
  * @license http://www.apache.org/licenses/LICENSE-2.0.html Apache License 2.0
  */
-class Plugin extends \Hongyukeji\Package\Package
+class Plugin extends \Hongyukeji\PluginPackage\Package
 {
     /**
      * Returns an AssetManager object to deal with the assets

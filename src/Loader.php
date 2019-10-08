@@ -9,7 +9,7 @@ namespace Hongyukeji\Plugin;
  * @package  Hongyukeji\Plugin
  * @license  http://www.apache.org/licenses/LICENSE-2.0.html Apache License 2.0
  */
-class Loader extends \Hongyukeji\Package\Loader
+class Loader extends \Hongyukeji\PluginPackage\Loader
 {
     /**
      * The type of package in use. Can be in example 'theme' or 'plugin'
