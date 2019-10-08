@@ -1,6 +1,6 @@
 <?php
 
-use Foolz\Plugin\Event as Event;
+use Hongyukeji\Plugin\Event as Event;
 
 class EventTest extends PHPUnit_Framework_TestCase
 {

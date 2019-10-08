@@ -1,6 +1,6 @@
 <?php
 
-use Foolz\Plugin\Result as Result;
+use Hongyukeji\Plugin\Result as Result;
 
 class ResultTest extends PHPUnit_Framework_TestCase
 {

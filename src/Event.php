@@ -1,12 +1,12 @@
 <?php
 
-namespace Foolz\Plugin;
+namespace Hongyukeji\Plugin;
 
 /**
  * An event is an action that is run on a Hook with the same key
  *
- * @author  Foolz <support@foolz.us>
- * @package  Foolz\Plugin
+ * @author  Hongyukeji <support@hongyuvip.com>
+ * @package  Hongyukeji\Plugin
  * @license  http://www.apache.org/licenses/LICENSE-2.0.html Apache License 2.0
  */
 class Event
@@ -61,7 +61,7 @@ class Event
      * Shorthand for the construct for PHP 5.3 to allow chaining
      *
      * @param  string  $key
-     * @return  \Foolz\Plugin\Event
+     * @return  \Hongyukeji\Plugin\Event
      */
     public static function forge($key)
     {
@@ -112,7 +112,7 @@ class Event
      * Sets the priority
      *
      * @param   int  $priority
-     * @return  \Foolz\Plugin\Event
+     * @return  \Hongyukeji\Plugin\Event
      */
     public function setPriority($priority)
     {
@@ -135,7 +135,7 @@ class Event
      * Sets the method or Closure to run
      *
      * @param  string|Closure  $callable
-     * @return  \Foolz\Plugin\Event
+     * @return  \Hongyukeji\Plugin\Event
      */
     public function setCall($callable)
     {

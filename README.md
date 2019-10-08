@@ -1,11 +1,15 @@
-Foolz PHP Plugin system
+Hongyukeji PHP Plugin system
 =======================
 
 A very complete plugin system to let you claim that your application supports plugins!
 
-You will need PHP 5.4 for this to work. You can install it through [Composer](http://getcomposer.org/) and [Packagist](https://packagist.org/packages/foolz/plugin).
+You will need PHP 5.4 for this to work.
 
-[![Build Status](https://secure.travis-ci.org/FoolRulez/Plugin.png)](http://travis-ci.org/FoolRulez/Plugin)
+[![Build Status](https://travis-ci.org/hongyukeji/plugin.svg?branch=master)](https://travis-ci.org/hongyukeji/plugin)
+[![Latest Stable Version](https://poser.pugx.org/hongyukeji/plugin/v/stable)](https://packagist.org/packages/hongyukeji/plugin)
+[![Total Downloads](https://poser.pugx.org/hongyukeji/plugin/downloads)](https://packagist.org/packages/hongyukeji/plugin)
+[![License](https://poser.pugx.org/hongyukeji/plugin/license)](https://packagist.org/packages/hongyukeji/plugin)
+[![composer.lock](https://poser.pugx.org/hongyukeji/plugin/composerlock)](https://packagist.org/packages/hongyukeji/plugin)
 
 ## Components
 
@@ -46,8 +50,8 @@ The most basic part of the package. You can use Hook and Event anywhere in your 
 ```php
 <?php
 
-use \Foolz\Plugin\Hook as Hook;
-use \Foolz\Plugin\Event as Event;
+use \Hongyukeji\Plugin\Hook as Hook;
+use \Hongyukeji\Plugin\Event as Event;
 
 // define an Event
 Event::forge('triggerOnThis')->setCall(function($result){
@@ -109,7 +113,7 @@ Here's an example of how would you load the plugins you choose to run:
 
 $loader = Loader::forge()->setDir('main', '/path/to/plugins/');
 
-$enabled_plugins = array('foolz/fake', 'foolz/kynet');
+$enabled_plugins = array('hongyuvip/fake', 'hongyuvip/kynet');
 
 foreach ($loader->getPlugins('main') as $plugin)
 {

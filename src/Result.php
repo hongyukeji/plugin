@@ -1,12 +1,12 @@
 <?php
 
-namespace Foolz\Plugin;
+namespace Hongyukeji\Plugin;
 
 /**
  * The result that is cascaded through events on the same key and returned by the hook
  *
- * @author Foolz <support@foolz.us>
- * @package Foolz\Plugin
+ * @author Hongyukeji <support@hongyuvip.com>
+ * @package Hongyukeji\Plugin
  * @license http://www.apache.org/licenses/LICENSE-2.0.html Apache License 2.0
  */
 class Result
@@ -55,7 +55,7 @@ class Result
     /**
      * Resets the object to the initial state
      *
-     * @return  \Foolz\Plugin\Result  The current object
+     * @return  \Hongyukeji\Plugin\Result  The current object
      */
     public function reset()
     {
@@ -85,7 +85,7 @@ class Result
      * Sets the result
      *
      * @param   mixed  $val
-     * @return  \Foolz\Plugin\Result
+     * @return  \Hongyukeji\Plugin\Result
      */
     public function set($val)
     {
@@ -154,7 +154,7 @@ class Result
      *
      * @param   string  $key
      * @param   mixed   $value
-     * @return  \Foolz\Plugin\Result
+     * @return  \Hongyukeji\Plugin\Result
      */
     public function setParam($key, $value)
     {
@@ -167,7 +167,7 @@ class Result
      * Updates several parameters
      *
      * @param   array  $array  Array with as keys the parameter key and as value the parameter value
-     * @return  \Foolz\Plugin\Result
+     * @return  \Hongyukeji\Plugin\Result
      */
     public function setParams($array)
     {

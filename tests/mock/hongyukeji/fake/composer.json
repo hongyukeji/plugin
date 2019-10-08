@@ -1,21 +1,21 @@
 {
-    "name": "foolz/fake",
-    "type": "foolz-plugin",
+    "name": "hongyuvip/fake",
+    "type": "hongyuvip-plugin",
     "description": "A fake plugin",
     "keywords": ["fake", "mock"],
-    "homepage": "http://www.foolz.us",
+    "homepage": "http://www.hongyuvip.com",
     "license": "Apache-2.0",
-    "authors": [{"name": "foolz", "email": "support@foolz.us"}],
+    "authors": [{"name": "hongyuvip", "email": "support@hongyuvip.com"}],
     "support": {
-        "email": "support@foolz.us",
+        "email": "support@hongyuvip.com",
         "irc": "irc://irc.irchighway.net/fooldriver"
     },
     "require" : {
-        "foolz/plugin": "dev"
+        "hongyuvip/plugin": "dev"
     },
     "autoload": {
         "psr-0": {
-            "Foolz\\Fake" : "classes/"
+            "Hongyukeji\\Fake" : "classes/"
         }
     },
     "extra": {

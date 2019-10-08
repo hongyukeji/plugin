@@ -1,6 +1,6 @@
 <?php
 
-use Foolz\Plugin\Loader;
+use Hongyukeji\Plugin\Loader;
 
 class LoaderTest extends PHPUnit_Framework_TestCase
 {
@@ -8,7 +8,7 @@ class LoaderTest extends PHPUnit_Framework_TestCase
     {
         $new = Loader::forge('default');
         $new->addDir('test', __DIR__.'/../../tests/mock/');
-        $plugin = $new->get('test', 'foolz/fake');
-        $this->assertInstanceOf('Foolz\Plugin\Plugin', $plugin);
+        $plugin = $new->get('test', 'hongyuvip/fake');
+        $this->assertInstanceOf('Hongyukeji\Plugin\Plugin', $plugin);
     }
 }

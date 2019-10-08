@@ -1,26 +1,26 @@
 <?php
 
-\Foolz\Plugin\Event::forge('the.bootstrap.was.loaded')
+\Hongyukeji\Plugin\Event::forge('the.bootstrap.was.loaded')
     ->setCall(function($result) {
         $result->set('success');
     });
 
-\Foolz\Plugin\Event::forge('foolz\plugin\plugin.execute.foolz/fake')
+\Hongyukeji\Plugin\Event::forge('hongyuvip\plugin\plugin.execute.hongyuvip/fake')
     ->setCall(function($result) {
         $result->set('success');
     });
 
-\Foolz\Plugin\Event::forge('foolz\plugin\plugin.install.foolz/fake')
+\Hongyukeji\Plugin\Event::forge('hongyuvip\plugin\plugin.install.hongyuvip/fake')
     ->setCall(function($result) {
         $result->set('success');
     });
 
-\Foolz\Plugin\Event::forge('foolz\plugin\plugin.uninstall.foolz/fake')
+\Hongyukeji\Plugin\Event::forge('hongyuvip\plugin\plugin.uninstall.hongyuvip/fake')
     ->setCall(function($result) {
         $result->set('success');
     });
 
-\Foolz\Plugin\Event::forge('foolz\plugin\plugin.upgrade.foolz/fake')
+\Hongyukeji\Plugin\Event::forge('hongyuvip\plugin\plugin.upgrade.hongyuvip/fake')
     ->setCall(function($result) {
         $result->set('success');
     });

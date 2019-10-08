@@ -1,12 +1,12 @@
 <?php
 
-namespace Foolz\Plugin;
+namespace Hongyukeji\Plugin;
 
 /**
- * Collection of utilities used in Foolz\Plugin
+ * Collection of utilities used in Hongyukeji\Plugin
  *
- * @author Foolz <support@foolz.us>
- * @package Foolz\Plugin
+ * @author Hongyukeji <support@hongyuvip.com>
+ * @package Hongyukeji\Plugin
  * @license http://www.apache.org/licenses/LICENSE-2.0.html Apache License 2.0
  */
 class Util
@@ -18,7 +18,7 @@ class Util
      * @param   string  $section   The dotted keys: akey.anotherkey.key
      * @param   mixed   $fallback  The fallback value
      * @return  mixed
-     * @throws  \DomainException  if the fallback is \Foolz\Plugin\Void
+     * @throws  \DomainException  if the fallback is \Hongyukeji\Plugin\Void
      */
     public static function dottedConfig($config, $section, $fallback)
     {

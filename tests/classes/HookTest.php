@@ -1,7 +1,7 @@
 <?php
 
-use Foolz\Plugin\Event as Event;
-use Foolz\Plugin\Hook as Hook;
+use Hongyukeji\Plugin\Event as Event;
+use Hongyukeji\Plugin\Hook as Hook;
 
 class HookTest extends PHPUnit_Framework_TestCase
 {
@@ -106,14 +106,14 @@ class HookTest extends PHPUnit_Framework_TestCase
 
     public function testDisable()
     {
-        \Foolz\Plugin\Hook::disable('disable.me');
+        \Hongyukeji\Plugin\Hook::disable('disable.me');
 
-        \Foolz\Plugin\Event::forge('disable.me')
+        \Hongyukeji\Plugin\Event::forge('disable.me')
             ->setCall(function($result) {
                 $result->setParam('result', 'unexpected');
             });
 
-        $result = \Foolz\Plugin\Hook::forge('disable.me')
+        $result = \Hongyukeji\Plugin\Hook::forge('disable.me')
             ->setParam('result', 'expected')
             ->execute();
 
@@ -122,15 +122,15 @@ class HookTest extends PHPUnit_Framework_TestCase
 
     public function testEnable()
     {
-        \Foolz\Plugin\Hook::disable('disable.me2');
-        \Foolz\Plugin\Hook::enable('disable.me2');
+        \Hongyukeji\Plugin\Hook::disable('disable.me2');
+        \Hongyukeji\Plugin\Hook::enable('disable.me2');
 
-        \Foolz\Plugin\Event::forge('disable.me2')
+        \Hongyukeji\Plugin\Event::forge('disable.me2')
             ->setCall(function($result) {
                 $result->setParam('result', 'expected');
             });
 
-        $result = \Foolz\Plugin\Hook::forge('disable.me2')
+        $result = \Hongyukeji\Plugin\Hook::forge('disable.me2')
             ->setParam('result', 'unexpected')
             ->execute();
 

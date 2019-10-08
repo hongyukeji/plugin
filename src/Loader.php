@@ -1,15 +1,15 @@
 <?php
 
-namespace Foolz\Plugin;
+namespace Hongyukeji\Plugin;
 
 /**
  * Automates loading of plugins
  *
- * @author   Foolz <support@foolz.us>
- * @package  Foolz\Plugin
+ * @author   Hongyukeji <support@hongyuvip.com>
+ * @package  Hongyukeji\Plugin
  * @license  http://www.apache.org/licenses/LICENSE-2.0.html Apache License 2.0
  */
-class Loader extends \Foolz\Package\Loader
+class Loader extends \Hongyukeji\Package\Loader
 {
     /**
      * The type of package in use. Can be in example 'theme' or 'plugin'
@@ -21,16 +21,16 @@ class Loader extends \Foolz\Package\Loader
 
     /**
      * The class into which the resulting objects are created.
-     * Override this, in example Foolz\Plugin\Plugin or Foolz\Theme\Theme
+     * Override this, in example Hongyukeji\Plugin\Plugin or Hongyukeji\Theme\Theme
      *
      * @var  string
      */
-    protected $type_class = 'Foolz\Plugin\Plugin';
+    protected $type_class = 'Hongyukeji\Plugin\Plugin';
 
     /**
      * Gets all the plugins or the plugins from the directory
      *
-     * @return  \Foolz\Plugin\Plugin[]  All the plugins or the plugins in the directory
+     * @return  \Hongyukeji\Plugin\Plugin[]  All the plugins or the plugins in the directory
      * @throws  \OutOfBoundsException   If there isn't such a $dir_name set
      */
     public function getAll()
@@ -43,7 +43,7 @@ class Loader extends \Foolz\Package\Loader
      *
      * @param   string  $slug               The slug of the plugin
      *
-     * @return  \Foolz\Plugin\Plugin
+     * @return  \Hongyukeji\Plugin\Plugin
      * @throws  \OutOfBoundsException  if the plugin doesn't exist
      */
     public function get($slug)

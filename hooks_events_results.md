@@ -66,7 +66,7 @@ _Chainable_
 
 Runs the Events on the hook.
 
-__Returns:__ _\Foolz\Plugin\Result_ - A Result object filtered by the events.
+__Returns:__ _\Hongyukeji\Plugin\Result_ - A Result object filtered by the events.
 
 
 ----
@@ -87,7 +87,7 @@ Event::forge('the_hook_key')
 	->setPriority(3);
 
 Event::forge('another_hook_key')
-	->setCall('Foolz\Theme\Plugin::rainbows')
+	->setCall('Hongyukeji\Theme\Plugin::rainbows')
 	->setPriority(8);
 ```
 
@@ -184,11 +184,11 @@ Full example:
 
 Don't get fooled by the order. Hook creates `$result` first, passes it to the Event. The Event modifies the `$result`. It then goes back to the Hook, that returns it to you.
 
-#### ->get($fallback = \Foolz\Plugin\Void)
+#### ->get($fallback = \Hongyukeji\Plugin\Void)
 
 Returns the result.
 
-__Returns:__ _mixed_ - The result that has been set. The fallback if no result has been set. \Foolz\Plugin\Void if no result or fallback has been set.
+__Returns:__ _mixed_ - The result that has been set. The fallback if no result has been set. \Hongyukeji\Plugin\Void if no result or fallback has been set.
 
 __Notice:__ Void is useful to recognize `null` as a valid result from an Event.
 

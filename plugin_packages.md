@@ -8,7 +8,7 @@ As we already have Hooks and Events, we can freely use them in the plugins. We'r
 
 Plugins are composed by at least two files: `composer.json` and `bootstrap.php`. A third file may be automatically created for performance purposes, called `composer.php` containing the `composer.json` data. You can use the directory for anything else.
 
-You will be able to choose multiple named directories to store the plugins. In general, this is the structure: `plugins_folder/vendor_name/plugin_name` In example, one of our plugins would be in `plugins/foolz/fake`.
+You will be able to choose multiple named directories to store the plugins. In general, this is the structure: `plugins_folder/vendor_name/plugin_name` In example, one of our plugins would be in `plugins/hongyuvip/fake`.
 
 ### composer.json
 
@@ -28,30 +28,30 @@ This allows setting a revision, used for database migrations. It's not compulsor
 
 In example: `plugins_folder/vendor_name/plugin_name/bootstrap.php`
 
-This will be run every time you `execute()` the plugin. If you have a plugin called `foolz/fake`, it's structure may be the following:
+This will be run every time you `execute()` the plugin. If you have a plugin called `hongyuvip/fake`, it's structure may be the following:
 
 ```php
 <?php
 	// execute
-	\Event::forge('\foolz\plugin\plugin.execute.foolz/fake')
+	\Event::forge('\hongyuvip\plugin\plugin.execute.hongyuvip/fake')
 		->setCall(function($result){
 
 		});
 
 	// install
-	\Event::forge('\foolz\plugin\plugin.install.foolz/fake')
+	\Event::forge('\hongyuvip\plugin\plugin.install.hongyuvip/fake')
 		->setCall(function($result){
 
 		});
 
 	// uninstall
-	\Event::forge('\foolz\plugin\plugin.uninstall.foolz/fake')
+	\Event::forge('\hongyuvip\plugin\plugin.uninstall.hongyuvip/fake')
 		->setCall(function($result){
 
 		});
 
 	// upgrade
-	\Event::forge('\foolz\plugin\plugin.upgrade.foolz/fake')
+	\Event::forge('\hongyuvip\plugin\plugin.upgrade.hongyuvip/fake')
 		->setCall(function($result){
 			$old_revision = $result->getParam('old_revision');
 			$new_revision = $result->getParam('new_revision');
@@ -112,7 +112,7 @@ Returns all the plugins.
 
 * string _$dir\_name_ - If set it will only return the plugins from the named directory
 
-__Returns:__ _array_ - an associative array of \Foolz\Plugin\Plugin with the dir name as first key and the plugin name as second. Only the plugin name as key if the dir name is set.
+__Returns:__ _array_ - an associative array of \Hongyukeji\Plugin\Plugin with the dir name as first key and the plugin name as second. Only the plugin name as key if the dir name is set.
 
 #### ->getPlugin($dir_name, $slug)
 
@@ -121,7 +121,7 @@ Returns the plugin.
 * string _$dir\_name_ - The named dir where the plugin is found
 * string _$slug_ - The name of the plugin
 
-__Returns:__ _\Foolz\Plugin\Plugin_ - The selected plugin
+__Returns:__ _\Hongyukeji\Plugin\Plugin_ - The selected plugin
 
 
 ----
@@ -154,16 +154,16 @@ Removes the class from the autoloading array.
 
 _Chainable_
 
-#### ->getConfig($section = null, $fallback = \Foolz\Plugin\Void)
+#### ->getConfig($section = null, $fallback = \Hongyukeji\Plugin\Void)
 
 Gets the configuration array or just a section.
 
 * null|string _section_ - An eventual string with arrays keys separated by dots
 * mixed _$fallback_  A fallback if the key is not found
 
-__Throws:__ _\DomainException_ - if the fallback was still \Foolz\Plugin\Void and the key was not found
+__Throws:__ _\DomainException_ - if the fallback was still \Hongyukeji\Plugin\Void and the key was not found
 
-#### ->getJsonConfig($section = null, $fallback = \Foolz\Plugin\Void)
+#### ->getJsonConfig($section = null, $fallback = \Hongyukeji\Plugin\Void)
 
 Works as `->getConfig()` but retrieves the data from the JSON file, therefore slower.
 
@@ -171,23 +171,23 @@ _See: `->getConfig()`_
 
 #### ->execute()
 
-Loads the `bootstrap.php` file and executes the event `foolz\plugin\plugin.execute.vendor_name/plugin_name`.
+Loads the `bootstrap.php` file and executes the event `hongyuvip\plugin\plugin.execute.vendor_name/plugin_name`.
 
 #### ->install()
 
-Loads the `bootstrap.php` file and executes the event `foolz\plugin\plugin.install.vendor_name/plugin_name`.
+Loads the `bootstrap.php` file and executes the event `hongyuvip\plugin\plugin.install.vendor_name/plugin_name`.
 
 This method supposes that the original plugin files are already in place.
 
 #### ->uninstall()
 
-Loads the `bootstrap.php` file and executes the event `foolz\plugin\plugin.uninstall.vendor_name/plugin_name`.
+Loads the `bootstrap.php` file and executes the event `hongyuvip\plugin\plugin.uninstall.vendor_name/plugin_name`.
 
 This method won't remove your plugin directory, only uninstall it with your Event.
 
 #### ->upgrade()
 
-Loads the `bootstrap.php` file and executes the event `foolz\plugin\plugin.upgrade.vendor_name/plugin_name`.
+Loads the `bootstrap.php` file and executes the event `hongyuvip\plugin\plugin.upgrade.vendor_name/plugin_name`.
 
 This method should be run after you updated the files. __You must leave the composer.php file in place to be able to have the plugin determine the revision__. It will be updated by this method when the upgrade is done.
 

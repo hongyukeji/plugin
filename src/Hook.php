@@ -1,12 +1,12 @@
 <?php
 
-namespace Foolz\Plugin;
+namespace Hongyukeji\Plugin;
 
 /**
  * The Hook that runs the events appended to it
  *
- * @author Foolz <support@foolz.us>
- * @package Foolz\Plugin
+ * @author Hongyukeji <support@hongyuvip.com>
+ * @package Hongyukeji\Plugin
  * @license http://www.apache.org/licenses/LICENSE-2.0.html Apache License 2.0
  */
 class Hook
@@ -53,7 +53,7 @@ class Hook
      * Shorthand for PHP5.3 to concatenate on constructor
      *
      * @param   string  $key
-     * @return  \Foolz\Plugin\Hook
+     * @return  \Hongyukeji\Plugin\Hook
      */
     public static function forge($key)
     {
@@ -84,7 +84,7 @@ class Hook
      * Sets the object the hook has been placed in
      *
      * @param   object  $object
-     * @return  \Foolz\Plugin\Hook
+     * @return  \Hongyukeji\Plugin\Hook
      */
     public function setObject($object)
     {
@@ -98,7 +98,7 @@ class Hook
      *
      * @param   string  $key
      * @param   mixed   $value
-     * @return  \Foolz\Plugin\Hook
+     * @return  \Hongyukeji\Plugin\Hook
      */
     public function setParam($key, $value)
     {
@@ -111,7 +111,7 @@ class Hook
      * Set bulks of parameters
      *
      * @param   array  $arr
-     * @return  \Foolz\Plugin\Hook
+     * @return  \Hongyukeji\Plugin\Hook
      */
     public function setParams(array $arr)
     {
@@ -125,7 +125,7 @@ class Hook
     /**
      * Executes the hook and cascades through all the events
      *
-     * @return  \Foolz\Plugin\Result
+     * @return  \Hongyukeji\Plugin\Result
      */
     public function execute()
     {

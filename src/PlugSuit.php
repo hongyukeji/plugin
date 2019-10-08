@@ -1,12 +1,12 @@
 <?php
 
-namespace Foolz\Plugin;
+namespace Hongyukeji\Plugin;
 
 /**
  * Allows adding plugin hooks for before and after with ease, change input parameters, override methods
  *
- * @author   Foolz <support@foolz.us>
- * @package  Foolz\Plugin
+ * @author   Hongyukeji <support@hongyuvip.com>
+ * @package  Hongyukeji\Plugin
  * @license  http://www.apache.org/licenses/LICENSE-2.0.html Apache License 2.0
  */
 trait PlugSuit
@@ -62,11 +62,11 @@ trait PlugSuit
         }
 
         // in the after, the last parameter passed will be the result
-        $after = \Foolz\Plugin\Hook::forge($class.'::'.$name.'#call.afterMethod')
+        $after = \Hongyukeji\Plugin\Hook::forge($class.'::'.$name.'#call.afterMethod')
             ->setParams($parameters)
             ->execute();
 
-        if (!$after->get() instanceof \Foolz\Plugin\Void) {
+        if (!$after->get() instanceof \Hongyukeji\Plugin\Void) {
             return $after->get();
         }
 
@@ -87,14 +87,14 @@ trait PlugSuit
             throw new \BadMethodCallException('Static method "'.$name.'" does not exist in "'.$class.'".');
         }
 
-        $before = \Foolz\Plugin\Hook::forge($class.'.'.$name.'#call.before')
+        $before = \Hongyukeji\Plugin\Hook::forge($class.'.'.$name.'#call.before')
             ->setParams($parameters)
             ->execute();
 
         $parameters = $before->getParams();
 
         // if it's not void it means we've replaced the return
-        if (!$before->get() instanceof \Foolz\Plugin\Void) {
+        if (!$before->get() instanceof \Hongyukeji\Plugin\Void) {
             $return = $before->get();
         } else {
             $pname = 'p_'.$name;
@@ -124,7 +124,7 @@ trait PlugSuit
         }
 
         // in the after, the last parameter passed will be the result
-        $after = \Foolz\Plugin\Hook::forge($class.'.'.$name.'#call.after')
+        $after = \Hongyukeji\Plugin\Hook::forge($class.'.'.$name.'#call.after')
             ->setParams($parameters)
             ->execute();
 
