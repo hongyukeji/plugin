@@ -4,14 +4,14 @@
     "description": "A plugin system for PHP, with cascading events.",
     "keywords": ["plugin", "event", "callback"],
     "homepage": "http://www.hongyuvip.com",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "authors": [{"name": "hongyuvip", "email": "support@hongyuvip.com"}],
     "support": {
         "email": "support@hongyuvip.com"
     },
     "require": {
         "php": ">=5.4.0",
-        "hongyuvip/plugin-package": "^1.0.0"
+        "hongyuvip/plugin-package": "^1.1.1"
     },
     "autoload": {
         "psr-4": {
