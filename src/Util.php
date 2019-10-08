@@ -30,7 +30,7 @@ class Util
             if (isset($current[$key])) {
                 $current = $current[$key];
             } else {
-                if ($fallback instanceof Void) {
+                if ($fallback instanceof Invalid) {
                     throw new \DomainException;
                 }
 

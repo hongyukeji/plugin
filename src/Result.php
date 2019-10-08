@@ -49,7 +49,7 @@ class Result
     {
         $this->params = $this->params_original = $params;
         $this->object = $object;
-        $this->result = new Void();
+        $this->result = new Invalid();
     }
 
     /**
@@ -74,7 +74,7 @@ class Result
      */
     public function get($fallback = null)
     {
-        if ($this->result instanceof Void && func_num_args() === 1) {
+        if ($this->result instanceof Invalid && func_num_args() === 1) {
             return $fallback;
         }
 
