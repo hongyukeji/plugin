@@ -7,14 +7,14 @@ class PluginTest extends PHPUnit_Framework_TestCase
 {
     public function unlinkConfig()
     {
-        if (file_exists(__DIR__.'/../../tests/mock/hongyuvip/fake/composer.php')) {
-            unlink(__DIR__.'/../../tests/mock/hongyuvip/fake/composer.php');
+        if (file_exists(__DIR__.'/../../tests/mock/hongyukeji/fake/composer.php')) {
+            unlink(__DIR__.'/../../tests/mock/hongyukeji/fake/composer.php');
         }
     }
 
     public function testConstruct()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $this->assertInstanceOf('Hongyukeji\Plugin\Plugin', $plugin);
     }
 
@@ -28,7 +28,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
 
     public function testGetSetLoader()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $loader = new Loader();
         $plugin->setLoader($loader);
         $this->assertSame($loader, $plugin->getLoader());
@@ -36,28 +36,28 @@ class PluginTest extends PHPUnit_Framework_TestCase
 
     public function testGetDir()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake');
-        $this->assertFalse(__DIR__.'/../../tests/mock/hongyuvip/fake' === $plugin->getDir());
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake');
+        $this->assertFalse(__DIR__.'/../../tests/mock/hongyukeji/fake' === $plugin->getDir());
 
         // it always adds a trailing slash
-        $this->assertSame(__DIR__.'/../../tests/mock/hongyuvip/fake/', $plugin->getDir());
+        $this->assertSame(__DIR__.'/../../tests/mock/hongyukeji/fake/', $plugin->getDir());
     }
 
     public function testGetJsonConfig()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $this->assertArrayHasKey('name', $plugin->getJsonConfig());
     }
 
     public function testGetJsonConfigKey()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $this->assertSame('Fake', $plugin->getJsonConfig('extra.name'));
     }
 
     public function testGetJsonConfigKeyFallback()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $this->assertSame('Fake', $plugin->getJsonConfig('extra.doesntexist', 'Fake'));
     }
 
@@ -66,7 +66,7 @@ class PluginTest extends PHPUnit_Framework_TestCase
      */
     public function testGetJsonConfigKeyThrows()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $this->assertSame('Fake', $plugin->getJsonConfig('extra.doesntexist'));
     }
 
@@ -75,13 +75,13 @@ class PluginTest extends PHPUnit_Framework_TestCase
      */
     public function testGetJsonConfigBrokenJsonThrows()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/broken_json/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/broken_json/');
         $plugin->getJsonConfig();
     }
 
     public function testJsonToConfig()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $plugin->jsonToConfig();
         $this->assertSame($plugin->getJsonConfig(), $plugin->getConfig());
         $this->unlinkConfig();
@@ -89,21 +89,21 @@ class PluginTest extends PHPUnit_Framework_TestCase
 
     public function testGetConfig()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $this->assertArrayHasKey('name', $plugin->getConfig());
         $this->unlinkConfig();
     }
 
     public function testGetConfigKey()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $this->assertSame('Fake', $plugin->getConfig('extra.name'));
         $this->unlinkConfig();
     }
 
     public function testGetConfigKeyFallback()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $this->assertSame('Fake', $plugin->getConfig('extra.doesntexist', 'Fake'));
         $this->unlinkConfig();
     }
@@ -113,24 +113,24 @@ class PluginTest extends PHPUnit_Framework_TestCase
      */
     public function testGetConfigKeyFallbackThrows()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $plugin->getConfig('extra.doesntexist');
         $this->unlinkConfig();
     }
 
     public function testRefreshConfig()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $plugin->getConfig();
 
         $plugin->refreshConfig();
-        $this->assertFalse(file_exists(__DIR__.'/../../tests/mock/hongyuvip/fake/composer.php'));
+        $this->assertFalse(file_exists(__DIR__.'/../../tests/mock/hongyukeji/fake/composer.php'));
         $this->unlinkConfig();
     }
 
     public function testBootstrap()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $plugin->bootstrap();
         // we set a trap in the bootstrap file
         $result = \Hongyukeji\Plugin\Hook::forge('the.bootstrap.was.loaded')->execute()->get('no load');
@@ -140,9 +140,9 @@ class PluginTest extends PHPUnit_Framework_TestCase
 
     public function testExecute()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $plugin->execute();
-        $result = \Hongyukeji\Plugin\Hook::forge('hongyuvip\plugin\plugin.execute.hongyuvip/fake')
+        $result = \Hongyukeji\Plugin\Hook::forge('hongyukeji\plugin\plugin.execute.hongyukeji/fake')
             ->execute()->get('no load');
         $this->assertSame('success', $result);
         $this->unlinkConfig();
@@ -150,9 +150,9 @@ class PluginTest extends PHPUnit_Framework_TestCase
 
     public function testInstall()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $plugin->install();
-        $result = \Hongyukeji\Plugin\Hook::forge('hongyuvip\plugin\plugin.install.hongyuvip/fake')
+        $result = \Hongyukeji\Plugin\Hook::forge('hongyukeji\plugin\plugin.install.hongyukeji/fake')
             ->execute()->get('no load');
         $this->assertSame('success', $result);
         $this->unlinkConfig();
@@ -160,9 +160,9 @@ class PluginTest extends PHPUnit_Framework_TestCase
 
     public function testUninstall()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $plugin->uninstall();
-        $result = \Hongyukeji\Plugin\Hook::forge('hongyuvip\plugin\plugin.uninstall.hongyuvip/fake')
+        $result = \Hongyukeji\Plugin\Hook::forge('hongyukeji\plugin\plugin.uninstall.hongyukeji/fake')
             ->execute()->get('no load');
         $this->assertSame('success', $result);
         $this->unlinkConfig();
@@ -170,9 +170,9 @@ class PluginTest extends PHPUnit_Framework_TestCase
 
     public function testUpgrade()
     {
-        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyuvip/fake/');
+        $plugin = new Plugin(__DIR__.'/../../tests/mock/hongyukeji/fake/');
         $plugin->upgrade();
-        $result = \Hongyukeji\Plugin\Hook::forge('hongyuvip\plugin\plugin.upgrade.hongyuvip/fake')
+        $result = \Hongyukeji\Plugin\Hook::forge('hongyukeji\plugin\plugin.upgrade.hongyukeji/fake')
             ->setObject($this)
             ->setParam('old_revision', $plugin->getConfig('extra.revision', 0))
             ->setParam('new_revision', $plugin->getJsonConfig('extra.revision', 0))

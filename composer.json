@@ -1,11 +1,11 @@
 {
-    "name": "hongyuvip/plugin",
+    "name": "hongyukeji/plugin",
     "type": "library",
     "description": "A plugin system for PHP, with cascading events.",
     "keywords": ["plugin", "event", "callback"],
     "homepage": "http://www.hongyuvip.com",
     "license": "MIT",
-    "authors": [{"name": "hongyuvip", "email": "support@hongyuvip.com"}],
+    "authors": [{"name": "hongyukeji", "email": "support@hongyuvip.com"}],
     "support": {
         "email": "support@hongyuvip.com"
     },

@@ -8,7 +8,7 @@ As we already have Hooks and Events, we can freely use them in the plugins. We'r
 
 Plugins are composed by at least two files: `composer.json` and `bootstrap.php`. A third file may be automatically created for performance purposes, called `composer.php` containing the `composer.json` data. You can use the directory for anything else.
 
-You will be able to choose multiple named directories to store the plugins. In general, this is the structure: `plugins_folder/vendor_name/plugin_name` In example, one of our plugins would be in `plugins/hongyuvip/fake`.
+You will be able to choose multiple named directories to store the plugins. In general, this is the structure: `plugins_folder/vendor_name/plugin_name` In example, one of our plugins would be in `plugins/hongyukeji/fake`.
 
 ### composer.json
 
@@ -28,30 +28,30 @@ This allows setting a revision, used for database migrations. It's not compulsor
 
 In example: `plugins_folder/vendor_name/plugin_name/bootstrap.php`
 
-This will be run every time you `execute()` the plugin. If you have a plugin called `hongyuvip/fake`, it's structure may be the following:
+This will be run every time you `execute()` the plugin. If you have a plugin called `hongyukeji/fake`, it's structure may be the following:
 
 ```php
 <?php
 	// execute
-	\Event::forge('\hongyuvip\plugin\plugin.execute.hongyuvip/fake')
+	\Event::forge('\hongyukeji\plugin\plugin.execute.hongyukeji/fake')
 		->setCall(function($result){
 
 		});
 
 	// install
-	\Event::forge('\hongyuvip\plugin\plugin.install.hongyuvip/fake')
+	\Event::forge('\hongyukeji\plugin\plugin.install.hongyukeji/fake')
 		->setCall(function($result){
 
 		});
 
 	// uninstall
-	\Event::forge('\hongyuvip\plugin\plugin.uninstall.hongyuvip/fake')
+	\Event::forge('\hongyukeji\plugin\plugin.uninstall.hongyukeji/fake')
 		->setCall(function($result){
 
 		});
 
 	// upgrade
-	\Event::forge('\hongyuvip\plugin\plugin.upgrade.hongyuvip/fake')
+	\Event::forge('\hongyukeji\plugin\plugin.upgrade.hongyukeji/fake')
 		->setCall(function($result){
 			$old_revision = $result->getParam('old_revision');
 			$new_revision = $result->getParam('new_revision');
@@ -171,23 +171,23 @@ _See: `->getConfig()`_
 
 #### ->execute()
 
-Loads the `bootstrap.php` file and executes the event `hongyuvip\plugin\plugin.execute.vendor_name/plugin_name`.
+Loads the `bootstrap.php` file and executes the event `hongyukeji\plugin\plugin.execute.vendor_name/plugin_name`.
 
 #### ->install()
 
-Loads the `bootstrap.php` file and executes the event `hongyuvip\plugin\plugin.install.vendor_name/plugin_name`.
+Loads the `bootstrap.php` file and executes the event `hongyukeji\plugin\plugin.install.vendor_name/plugin_name`.
 
 This method supposes that the original plugin files are already in place.
 
 #### ->uninstall()
 
-Loads the `bootstrap.php` file and executes the event `hongyuvip\plugin\plugin.uninstall.vendor_name/plugin_name`.
+Loads the `bootstrap.php` file and executes the event `hongyukeji\plugin\plugin.uninstall.vendor_name/plugin_name`.
 
 This method won't remove your plugin directory, only uninstall it with your Event.
 
 #### ->upgrade()
 
-Loads the `bootstrap.php` file and executes the event `hongyuvip\plugin\plugin.upgrade.vendor_name/plugin_name`.
+Loads the `bootstrap.php` file and executes the event `hongyukeji\plugin\plugin.upgrade.vendor_name/plugin_name`.
 
 This method should be run after you updated the files. __You must leave the composer.php file in place to be able to have the plugin determine the revision__. It will be updated by this method when the upgrade is done.
 

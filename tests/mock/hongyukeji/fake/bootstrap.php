@@ -5,22 +5,22 @@
         $result->set('success');
     });
 
-\Hongyukeji\Plugin\Event::forge('hongyuvip\plugin\plugin.execute.hongyuvip/fake')
+\Hongyukeji\Plugin\Event::forge('hongyukeji\plugin\plugin.execute.hongyukeji/fake')
     ->setCall(function($result) {
         $result->set('success');
     });
 
-\Hongyukeji\Plugin\Event::forge('hongyuvip\plugin\plugin.install.hongyuvip/fake')
+\Hongyukeji\Plugin\Event::forge('hongyukeji\plugin\plugin.install.hongyukeji/fake')
     ->setCall(function($result) {
         $result->set('success');
     });
 
-\Hongyukeji\Plugin\Event::forge('hongyuvip\plugin\plugin.uninstall.hongyuvip/fake')
+\Hongyukeji\Plugin\Event::forge('hongyukeji\plugin\plugin.uninstall.hongyukeji/fake')
     ->setCall(function($result) {
         $result->set('success');
     });
 
-\Hongyukeji\Plugin\Event::forge('hongyuvip\plugin\plugin.upgrade.hongyuvip/fake')
+\Hongyukeji\Plugin\Event::forge('hongyukeji\plugin\plugin.upgrade.hongyukeji/fake')
     ->setCall(function($result) {
         $result->set('success');
     });

@@ -113,7 +113,7 @@ Here's an example of how would you load the plugins you choose to run:
 
 $loader = Loader::forge()->setDir('main', '/path/to/plugins/');
 
-$enabled_plugins = array('hongyuvip/fake', 'hongyuvip/kynet');
+$enabled_plugins = array('hongyukeji/fake', 'hongyukeji/kynet');
 
 foreach ($loader->getPlugins('main') as $plugin)
 {

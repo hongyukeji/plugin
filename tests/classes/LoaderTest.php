@@ -8,7 +8,7 @@ class LoaderTest extends PHPUnit_Framework_TestCase
     {
         $new = Loader::forge('default');
         $new->addDir('test', __DIR__.'/../../tests/mock/');
-        $plugin = $new->get('test', 'hongyuvip/fake');
+        $plugin = $new->get('test', 'hongyukeji/fake');
         $this->assertInstanceOf('Hongyukeji\Plugin\Plugin', $plugin);
     }
 }
