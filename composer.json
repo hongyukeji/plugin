@@ -17,5 +17,12 @@
         "psr-4": {
             "Hongyukeji\\Plugin\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hongyukeji\\Plugin\\PluginServiceProvider"
+            ]
+        }
     }
 }
