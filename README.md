@@ -13,6 +13,12 @@ You will need PHP 5.4 for this to work.
 
 ## Components
 
+```
+php artisan vendor:publish --provider="Hongyukeji\Plugin\PluginServiceProvider"
+```
+
+## Components
+
 * __Hooks__
 
 	Place them in your code to execute events. Unlike several other packages, these Hooks allow interacting with the data and can hold the scope of the class.
