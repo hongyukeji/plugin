@@ -17,14 +17,16 @@ class PluginServiceProvider extends ServiceProvider
         ], 'config');
 
         if (class_exists('Hongyukeji\Plugin\Loader')) {
-            $loader = Loader::forge()->addDir(config('plugins.directory', base_path('plugins')));
+            $plugins_path = config('plugins.directory', base_path('plugins'));
+            $loader = Loader::forge()->addDir($plugins_path);
             foreach ($loader->getAll() as $plugin) {
+                $plugin_path = $plugin->getDir();
                 // 判断插件状态是否启用
                 if ($plugin->getConfig('extra.status', false)) {
-                    // 加载插件目录src类文件
+                    // 自动加载插件目录src类文件
                     $src_paths = [];
-                    $path = str_finish($plugin->getDir(), '/') . "src";
-                    $src_paths[$plugin->getConfig('extra.namespace')] = $path;
+                    $path = str_finish($plugin_path, '/') . "src";
+                    $src_paths[$plugin->getConfig('extra.namespace', $this->getNamespace($plugin_path, $plugins_path))] = $path;
                     $this->registerClassAutoloader($src_paths);
 
                     // 插件初始化执行命令
@@ -33,6 +35,21 @@ class PluginServiceProvider extends ServiceProvider
             }
         }
 
+    }
+
+    /**
+     * 获取插件命名空间名称
+     *
+     * @param $plugin_path 当前插件目录
+     * @param $plugins_path 插件总目录
+     * @return string
+     */
+    protected function getNamespace($plugin_path, $plugins_path)
+    {
+        $namespace_path = Str::after($plugin_path, $plugins_path);
+        $namespace_str = Str::studly($namespace_path);
+        $namespace = ucwords(str_replace(['/'], ' ', $namespace_str));
+        return trim(str_replace(' ', '\\', $namespace), '\\');
     }
 
     /**
