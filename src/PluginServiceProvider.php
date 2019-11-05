@@ -4,6 +4,7 @@ namespace Hongyukeji\Plugin;
 
 use Hongyukeji\Plugin\Loader;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 class PluginServiceProvider extends ServiceProvider
 {
@@ -19,40 +20,42 @@ class PluginServiceProvider extends ServiceProvider
             $loader = Loader::forge()->addDir(config('plugins.directory', base_path('plugins')));
             foreach ($loader->getAll() as $plugin) {
                 // 判断插件状态是否启用
-                if ($plugin->getConfig('extra.status')) {
+                if ($plugin->getConfig('extra.status', false)) {
+                    // 加载插件目录src类文件
+                    $src_paths = [];
                     $path = str_finish($plugin->getDir(), '/') . "src";
-                    if (is_dir($path)) {
-                        $files = $this->getPathFiles($path);
-                        foreach ($files as $file) {
-                            $file_path = $path . $file;
-                            if (file_exists($file_path) && ends_with($file_path, '.php')) {
-                                include_once $file_path;
-                            }
-                        }
-                    }
+                    $src_paths[$plugin->getConfig('extra.namespace')] = $path;
+                    $this->registerClassAutoloader($src_paths);
+
+                    // 插件初始化执行命令
                     $plugin->execute();
                 }
             }
         }
+
     }
 
-    public function tree(& $array_files, $directory, $dir_name = '')
+    /**
+     * Register class autoloader for plugins.
+     *
+     * @return void
+     */
+    protected function registerClassAutoloader($paths)
     {
-        $mydir = dir($directory);
-        while ($file = $mydir->read()) {
-            if ((is_dir("$directory/$file")) AND ($file != ".") AND ($file != "..")) {
-                $this->tree($array_files, "$directory/$file", "$dir_name/$file");
-            } else if (($file != ".") AND ($file != "..")) {
-                $array_files[] = "$dir_name/$file";
+        spl_autoload_register(function ($class) use ($paths) {
+            // Traverse in registered plugin paths
+            foreach ((array)array_keys($paths) as $namespace) {
+                if ($namespace != '' && mb_strpos($class, $namespace) === 0) {
+                    // Parse real file path
+                    $path = $paths[$namespace] . Str::replaceFirst($namespace, '', $class) . ".php";
+                    $path = str_replace('\\', '/', $path);
+
+                    if (file_exists($path)) {
+                        // Include class file if it exists
+                        include $path;
+                    }
+                }
             }
-        }
-        $mydir->close();
-    }
-
-    public function getPathFiles($path)
-    {
-        $array_files = array();
-        $this->tree($array_files, $path);
-        return $array_files;
+        });
     }
 }
