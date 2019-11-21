@@ -19,8 +19,16 @@ class PluginServiceProvider extends ServiceProvider
         if (class_exists('Hongyukeji\Plugin\Loader')) {
             $plugins_path = config('plugins.directory', base_path('plugins'));
             $loader = Loader::forge()->addDir($plugins_path);
+            $app_version = get_app_version();
             foreach ($loader->getAll() as $plugin) {
                 $plugin_path = $plugin->getDir();
+
+                // 判断当前系统版本是否满足插件运行条件
+                $require_framework = $plugin->getConfig('require.framework', null);
+                if ($require_framework && !version_require($app_version, $require_framework)) {
+                    continue;
+                }
+
                 // 判断插件状态是否启用
                 if ($plugin->getConfig('extra.status', false)) {
                     // 自动加载插件目录src类文件
@@ -34,7 +42,6 @@ class PluginServiceProvider extends ServiceProvider
                 }
             }
         }
-
     }
 
     /**
